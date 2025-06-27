@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Datos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <main>
+
+    <img src="images/logo.png" alt="" style="width: 100%; max-width: 800px; display: block; margin: auto;">
+
+    <h1>Registro de Datos</h1>  
+    <form id="formulario" onsubmit="return validarFormulario()">
+      <label for="lclave">Clave</label>
+      <input type="number" id="lclave" name="clave" placeholder="clave de empleado.." required>
+
+      <label for="fnom">Nombre</label>
+      <input type="text" id="fnom" name="nombre" placeholder="Escriba su nombre.." required>
+
+      <label for="lappat">Apellido Paterno</label>
+      <input type="text" id="lappat" name="appat" placeholder="Apellido paterno.." required>
+
+      <label for="lapmat">Apellido Materno</label>
+      <input type="text" id="lapmat" name="apmat" placeholder="Apellido materno.." required>
+
+      <input type="submit" value="Submit">
+    </form>		
+  </main>
+
+  <script>
+
+    const camposTexto = ["fnom", "lappat", "lapmat"];
+    camposTexto.forEach(id => {
+      const campo = document.getElementById(id);
+      campo.addEventListener("input", function () {
+        this.value = this.value.toUpperCase();
+      });
+    });
+
+    function validarFormulario() {
+      const clave = document.getElementById("lclave").value;
+      if (clave <= 0) {
+        alert("La clave debe ser un número mayor a cero.");
+        return false;
+      }
+      return true;
+    }
+  </script>
+
+</body>
+</html>
